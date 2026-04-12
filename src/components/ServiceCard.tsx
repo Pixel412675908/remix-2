@@ -53,8 +53,14 @@ export function ServiceCard({ service, index, onEmbed, onModal }: ServiceCardPro
 
       {/* Icon + Title */}
       <div className="flex items-start gap-4 mb-4">
-        <div className="w-10 h-10 rounded-xl bg-muted/50 flex items-center justify-center shrink-0 overflow-hidden">
-          <img src={service.logo} alt={service.nome} className="w-8 h-8 object-contain" loading="lazy" />
+        <div className="w-11 h-11 rounded-xl bg-muted/30 flex items-center justify-center shrink-0 overflow-hidden p-1.5">
+          <img
+            src={service.logo}
+            alt={service.nome}
+            className="w-full h-full object-contain"
+            loading="lazy"
+            draggable={false}
+          />
         </div>
         <div className="min-w-0">
           <h3 className="font-semibold text-foreground text-[15px] leading-tight">{service.nome}</h3>
