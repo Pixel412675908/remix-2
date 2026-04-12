@@ -33,7 +33,7 @@ export const services: Service[] = [
     logo: taskitosIcon,
   },
   {
-    id: "kanto",
+    id: "khan-academy",
     nome: "Khan Academy",
     descricao: "Acesso direto ao Khan Academy em português.",
     categoria: "scripts",
@@ -53,7 +53,7 @@ export const services: Service[] = [
     logo: leiaspIcon,
   },
   {
-    id: "speaki",
+    id: "speak",
     nome: "Speak",
     descricao: "Pratique idiomas com ferramentas de conversação.",
     categoria: "scripts",
