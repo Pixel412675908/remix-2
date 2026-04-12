@@ -56,7 +56,7 @@ export function ServiceCard({ service, index, onEmbed, onModal }: ServiceCardPro
         <img
           src={service.logo}
           alt={service.nome}
-          className="h-12 w-auto max-w-[120px] shrink-0 object-contain sm:h-14 md:h-16"
+          className="h-14 w-14 shrink-0 object-contain sm:h-16 sm:w-16 md:h-[72px] md:w-[72px]"
           loading="lazy"
           draggable={false}
         />
