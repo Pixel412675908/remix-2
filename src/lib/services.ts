@@ -1,3 +1,11 @@
+import taskitosLogo from "@/assets/logos/taskitos.png";
+import kantoLogo from "@/assets/logos/kanto.png";
+import leiaspLogo from "@/assets/logos/leiasp.png";
+import speakiLogo from "@/assets/logos/speaki.png";
+import apostilasLogo from "@/assets/logos/apostilas.png";
+import destroyerLogo from "@/assets/logos/destroyer.png";
+import eclipseLunarLogo from "@/assets/logos/eclipse-lunar.png";
+
 export type ServiceCategory = "scripts" | "apostila" | "plataforma";
 export type OpenType = "embed" | "modal" | "external";
 
@@ -9,6 +17,7 @@ export interface Service {
   url: string;
   tipo: OpenType;
   icon: string;
+  logo: string;
   status?: "active" | "coming-soon";
 }
 
@@ -21,6 +30,7 @@ export const services: Service[] = [
     url: "https://taskitos.cupiditys.lol/",
     tipo: "embed",
     icon: "check-square",
+    logo: taskitosLogo,
   },
   {
     id: "kanto",
@@ -30,6 +40,7 @@ export const services: Service[] = [
     url: "https://khan.cupiditys.lol/pt-br/",
     tipo: "embed",
     icon: "graduation-cap",
+    logo: kantoLogo,
   },
   {
     id: "leia-sp",
@@ -39,6 +50,7 @@ export const services: Service[] = [
     url: "https://leiasp.cupiditys.lol/",
     tipo: "embed",
     icon: "book-open",
+    logo: leiaspLogo,
   },
   {
     id: "speaki",
@@ -48,6 +60,7 @@ export const services: Service[] = [
     url: "https://speakify.cupiditys.lol/",
     tipo: "embed",
     icon: "languages",
+    logo: speakiLogo,
   },
   {
     id: "apostilas",
@@ -57,6 +70,7 @@ export const services: Service[] = [
     url: "https://apostilas.cupiditys.lol/",
     tipo: "embed",
     icon: "file-text",
+    logo: apostilasLogo,
   },
   {
     id: "platform-destroyer",
@@ -66,6 +80,7 @@ export const services: Service[] = [
     url: "",
     tipo: "external",
     icon: "zap",
+    logo: destroyerLogo,
     status: "coming-soon",
   },
   {
@@ -76,9 +91,9 @@ export const services: Service[] = [
     url: "https://crimsonzerohub.xyz/",
     tipo: "external",
     icon: "moon",
+    logo: eclipseLunarLogo,
   },
 ];
-
 export const categoryLabels: Record<ServiceCategory, string> = {
   scripts: "Scripts",
   apostila: "Apostilas",
