@@ -10,11 +10,23 @@ import { ServiceModal } from "@/components/ServiceModal";
 
 const categories: ServiceCategory[] = ["scripts", "apostila", "plataforma"];
 
+function getStoredCategory(): ServiceCategory | "all" {
+  if (typeof window === "undefined") return "all";
+  const stored = localStorage.getItem("lumi-category");
+  if (stored === "scripts" || stored === "apostila" || stored === "plataforma") return stored;
+  return "all";
+}
+
 export default function Index() {
   const { theme, toggle } = useTheme();
-  const [activeCategory, setActiveCategory] = useState<ServiceCategory | "all">("all");
+  const [activeCategory, setActiveCategory] = useState<ServiceCategory | "all">(getStoredCategory);
   const [embedService, setEmbedService] = useState<Service | null>(null);
   const [modalService, setModalService] = useState<Service | null>(null);
+
+  const handleCategoryChange = (cat: ServiceCategory | "all") => {
+    setActiveCategory(cat);
+    localStorage.setItem("lumi-category", cat);
+  };
 
   const filtered = activeCategory === "all"
     ? services
@@ -28,7 +40,7 @@ export default function Index() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-40 glass-strong">
-        <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-5 h-14 sm:h-16 flex items-center justify-between">
           <LumiLogo />
           <button
             onClick={toggle}
@@ -41,27 +53,27 @@ export default function Index() {
       </header>
 
       {/* Hero */}
-      <section className="max-w-6xl mx-auto px-5 pt-12 pb-8">
+      <section className="max-w-6xl mx-auto px-4 sm:px-5 pt-8 sm:pt-12 pb-6 sm:pb-8">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground tracking-tight">
             Seu hub central
           </h1>
-          <p className="text-muted-foreground mt-2 text-[15px] max-w-md">
+          <p className="text-muted-foreground mt-2 text-sm sm:text-[15px] max-w-md">
             Acesse todos os seus serviços em um só lugar, de forma organizada e rápida.
           </p>
         </motion.div>
       </section>
 
       {/* Category Filter */}
-      <section className="max-w-6xl mx-auto px-5 pb-6">
-        <div className="flex items-center gap-2 overflow-x-auto pb-1">
+      <section className="max-w-6xl mx-auto px-4 sm:px-5 pb-4 sm:pb-6">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
           <FilterPill
             active={activeCategory === "all"}
-            onClick={() => setActiveCategory("all")}
+            onClick={() => handleCategoryChange("all")}
             label="Todos"
             count={services.length}
           />
@@ -69,7 +81,7 @@ export default function Index() {
             <FilterPill
               key={cat}
               active={activeCategory === cat}
-              onClick={() => setActiveCategory(cat)}
+              onClick={() => handleCategoryChange(cat)}
               label={categoryLabels[cat]}
               count={services.filter((s) => s.categoria === cat).length}
             />
@@ -78,8 +90,8 @@ export default function Index() {
       </section>
 
       {/* Cards Grid */}
-      <section className="max-w-6xl mx-auto px-5 pb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <section className="max-w-6xl mx-auto px-4 sm:px-5 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {filtered.map((service, i) => (
             <ServiceCard
               key={service.id}
@@ -94,9 +106,9 @@ export default function Index() {
 
       {/* Footer */}
       <footer className="border-t border-border">
-        <div className="max-w-6xl mx-auto px-5 py-6 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-5 py-5 sm:py-6 flex items-center justify-between">
           <span className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} LUMI
+            © {new Date().getFullYear()} lumi
           </span>
           <span className="text-xs text-muted-foreground">
             Hub de produtividade

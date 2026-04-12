@@ -9,50 +9,52 @@ export interface Service {
   url: string;
   tipo: OpenType;
   icon: string;
+  status?: "active" | "coming-soon";
 }
 
 export const services: Service[] = [
   {
     id: "platform-destroyer",
-    nome: "Platform Destroyer",
+    nome: "Destroyer",
     descricao: "Automatize ações em plataformas com scripts avançados.",
     categoria: "scripts",
     url: "",
     tipo: "external",
     icon: "zap",
+    status: "coming-soon",
   },
   {
     id: "taskitos",
     nome: "Taskitos",
     descricao: "Gerencie tarefas e produtividade de forma inteligente.",
-    categoria: "plataforma",
+    categoria: "scripts",
     url: "https://taskitos.cupiditys.lol/",
     tipo: "embed",
     icon: "check-square",
   },
   {
-    id: "kanto",
-    nome: "Kanto",
-    descricao: "Acesso direto ao Khan Academy em português.",
-    categoria: "plataforma",
-    url: "https://khan.cupiditys.lol/pt-br/",
-    tipo: "embed",
-    icon: "graduation-cap",
-  },
-  {
     id: "leia-sp",
     nome: "Leia SP",
-    descricao: "Biblioteca digital com acervo de leitura acessível.",
-    categoria: "apostila",
+    descricao: "Ferramenta educacional leve com acervo de leitura acessível.",
+    categoria: "scripts",
     url: "https://leiasp.cupiditys.lol/",
     tipo: "embed",
     icon: "book-open",
   },
   {
+    id: "kanto",
+    nome: "Kanto",
+    descricao: "Acesso direto ao Khan Academy em português.",
+    categoria: "apostila",
+    url: "https://khan.cupiditys.lol/pt-br/",
+    tipo: "embed",
+    icon: "graduation-cap",
+  },
+  {
     id: "speaki",
     nome: "Speaki",
     descricao: "Pratique idiomas com ferramentas de conversação.",
-    categoria: "plataforma",
+    categoria: "apostila",
     url: "https://speakify.cupiditys.lol/",
     tipo: "embed",
     icon: "languages",

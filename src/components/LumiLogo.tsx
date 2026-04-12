@@ -5,15 +5,15 @@ export function LumiLogo() {
   const isDark = theme === "dark";
 
   return (
-    <span className="text-2xl font-bold tracking-tight select-none">
-      {isDark ? (
-        <>
-          <span className="text-foreground">LUMI</span>
-          <span className="glow-green text-primary">NATE</span>
-        </>
-      ) : (
-        <span className="text-foreground">LUMI</span>
+    <div className="select-none flex items-baseline">
+      <span className="text-[22px] font-bold tracking-[0.04em] text-foreground" style={{ fontFamily: "'Inter', sans-serif" }}>
+        lumi
+      </span>
+      {isDark && (
+        <span className="text-[22px] font-bold tracking-[0.04em] glow-green text-primary" style={{ fontFamily: "'Inter', sans-serif" }}>
+          nate
+        </span>
       )}
-    </span>
+    </div>
   );
 }
