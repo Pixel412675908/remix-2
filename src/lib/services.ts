@@ -1,10 +1,10 @@
-import taskitosLogo from "@/assets/logos/taskitos.png";
-import kantoLogo from "@/assets/logos/kanto.png";
-import leiaspLogo from "@/assets/logos/leiasp.png";
-import speakiLogo from "@/assets/logos/speaki.png";
-import apostilasLogo from "@/assets/logos/apostilas.png";
-import destroyerLogo from "@/assets/logos/destroyer.png";
-import eclipseLunarLogo from "@/assets/logos/eclipse-lunar.png";
+import taskitosIcon from "@/assets/icons/taskitos.png";
+import khanIcon from "@/assets/icons/khan.png";
+import leiaspIcon from "@/assets/icons/leiasp.png";
+import speakIcon from "@/assets/icons/speak.png";
+import apostilasIcon from "@/assets/icons/apostilas.png";
+import destroyerIcon from "@/assets/icons/destroyer.png";
+import eclipseLunarIcon from "@/assets/icons/eclipse-lunar.png";
 
 export type ServiceCategory = "scripts" | "apostila" | "plataforma";
 export type OpenType = "embed" | "modal" | "external";
@@ -30,7 +30,7 @@ export const services: Service[] = [
     url: "https://taskitos.cupiditys.lol/",
     tipo: "embed",
     icon: "check-square",
-    logo: taskitosLogo,
+    logo: taskitosIcon,
   },
   {
     id: "kanto",
@@ -40,7 +40,7 @@ export const services: Service[] = [
     url: "https://khan.cupiditys.lol/pt-br/",
     tipo: "embed",
     icon: "graduation-cap",
-    logo: kantoLogo,
+    logo: khanIcon,
   },
   {
     id: "leia-sp",
@@ -50,7 +50,7 @@ export const services: Service[] = [
     url: "https://leiasp.cupiditys.lol/",
     tipo: "embed",
     icon: "book-open",
-    logo: leiaspLogo,
+    logo: leiaspIcon,
   },
   {
     id: "speaki",
@@ -60,7 +60,7 @@ export const services: Service[] = [
     url: "https://speakify.cupiditys.lol/",
     tipo: "embed",
     icon: "languages",
-    logo: speakiLogo,
+    logo: speakIcon,
   },
   {
     id: "apostilas",
@@ -70,18 +70,17 @@ export const services: Service[] = [
     url: "https://apostilas.cupiditys.lol/",
     tipo: "embed",
     icon: "file-text",
-    logo: apostilasLogo,
+    logo: apostilasIcon,
   },
   {
     id: "platform-destroyer",
     nome: "Destroyer",
     descricao: "Automatize ações em plataformas com scripts avançados.",
     categoria: "plataforma",
-    url: "",
+    url: "https://sixseven67-lilac.vercel.app/",
     tipo: "external",
     icon: "zap",
-    logo: destroyerLogo,
-    status: "coming-soon",
+    logo: destroyerIcon,
   },
   {
     id: "eclipse-lunar",
@@ -91,7 +90,7 @@ export const services: Service[] = [
     url: "https://crimsonzerohub.xyz/",
     tipo: "external",
     icon: "moon",
-    logo: eclipseLunarLogo,
+    logo: eclipseLunarIcon,
   },
 ];
 export const categoryLabels: Record<ServiceCategory, string> = {
