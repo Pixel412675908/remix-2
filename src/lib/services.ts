@@ -1,3 +1,11 @@
+import taskitosLogo from "@/assets/logos/taskitos.png";
+import kantoLogo from "@/assets/logos/kanto.png";
+import leiaspLogo from "@/assets/logos/leiasp.png";
+import speakiLogo from "@/assets/logos/speaki.png";
+import apostilasLogo from "@/assets/logos/apostilas.png";
+import destroyerLogo from "@/assets/logos/destroyer.png";
+import eclipseLunarLogo from "@/assets/logos/eclipse-lunar.png";
+
 export type ServiceCategory = "scripts" | "apostila" | "plataforma";
 export type OpenType = "embed" | "modal" | "external";
 
@@ -9,6 +17,7 @@ export interface Service {
   url: string;
   tipo: OpenType;
   icon: string;
+  logo: string;
   status?: "active" | "coming-soon";
 }
 
