@@ -14,16 +14,6 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    id: "platform-destroyer",
-    nome: "Destroyer",
-    descricao: "Automatize ações em plataformas com scripts avançados.",
-    categoria: "scripts",
-    url: "",
-    tipo: "external",
-    icon: "zap",
-    status: "coming-soon",
-  },
-  {
     id: "taskitos",
     nome: "Taskitos",
     descricao: "Gerencie tarefas e produtividade de forma inteligente.",
@@ -31,6 +21,15 @@ export const services: Service[] = [
     url: "https://taskitos.cupiditys.lol/",
     tipo: "embed",
     icon: "check-square",
+  },
+  {
+    id: "kanto",
+    nome: "Kanto",
+    descricao: "Acesso direto ao Khan Academy em português.",
+    categoria: "scripts",
+    url: "https://khan.cupiditys.lol/pt-br/",
+    tipo: "embed",
+    icon: "graduation-cap",
   },
   {
     id: "leia-sp",
@@ -42,19 +41,10 @@ export const services: Service[] = [
     icon: "book-open",
   },
   {
-    id: "kanto",
-    nome: "Kanto",
-    descricao: "Acesso direto ao Khan Academy em português.",
-    categoria: "apostila",
-    url: "https://khan.cupiditys.lol/pt-br/",
-    tipo: "embed",
-    icon: "graduation-cap",
-  },
-  {
     id: "speaki",
     nome: "Speaki",
     descricao: "Pratique idiomas com ferramentas de conversação.",
-    categoria: "apostila",
+    categoria: "scripts",
     url: "https://speakify.cupiditys.lol/",
     tipo: "embed",
     icon: "languages",
@@ -67,6 +57,16 @@ export const services: Service[] = [
     url: "https://apostilas.cupiditys.lol/",
     tipo: "embed",
     icon: "file-text",
+  },
+  {
+    id: "platform-destroyer",
+    nome: "Destroyer",
+    descricao: "Automatize ações em plataformas com scripts avançados.",
+    categoria: "plataforma",
+    url: "",
+    tipo: "external",
+    icon: "zap",
+    status: "coming-soon",
   },
   {
     id: "eclipse-lunar",
