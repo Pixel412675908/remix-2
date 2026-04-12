@@ -34,7 +34,7 @@ export const services: Service[] = [
   },
   {
     id: "kanto",
-    nome: "Kanto",
+    nome: "Khan Academy",
     descricao: "Acesso direto ao Khan Academy em português.",
     categoria: "scripts",
     url: "https://khan.cupiditys.lol/pt-br/",
@@ -54,7 +54,7 @@ export const services: Service[] = [
   },
   {
     id: "speaki",
-    nome: "Speaki",
+    nome: "Speak",
     descricao: "Pratique idiomas com ferramentas de conversação.",
     categoria: "scripts",
     url: "https://speakify.cupiditys.lol/",
