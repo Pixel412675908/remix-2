@@ -77,7 +77,7 @@ export const services: Service[] = [
     nome: "Destroyer",
     descricao: "Automatize ações em plataformas com scripts avançados.",
     categoria: "plataforma",
-    url: "https://sixseven67-lilac.vercel.app/",
+    url: "https://cmsphacks.xyz/",
     tipo: "external",
     icon: "zap",
     logo: destroyerIcon,
