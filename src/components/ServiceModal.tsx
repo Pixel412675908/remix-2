@@ -1,7 +1,8 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink, ArrowLeft, RotateCw } from "lucide-react";
+import { X, ExternalLink, ArrowLeft, RotateCw, AlertTriangle } from "lucide-react";
 import type { Service } from "@/lib/services";
+import { openPopup } from "@/lib/popup";
 
 interface ServiceModalProps {
   service: Service | null;
@@ -10,8 +11,34 @@ interface ServiceModalProps {
 
 export function ServiceModal({ service, onClose }: ServiceModalProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [iframeError, setIframeError] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => {
+    setIframeError(false);
+    setLoading(true);
+    timerRef.current = setTimeout(() => {
+      if (loading) setIframeError(true);
+    }, 8000);
+    return () => clearTimeout(timerRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [service?.id]);
+
+  const handleLoad = useCallback(() => {
+    setLoading(false);
+    clearTimeout(timerRef.current);
+  }, []);
+
+  const handleError = useCallback(() => {
+    setIframeError(true);
+    setLoading(false);
+    clearTimeout(timerRef.current);
+  }, []);
 
   const handleReload = useCallback(() => {
+    setIframeError(false);
+    setLoading(true);
     if (iframeRef.current) {
       const src = iframeRef.current.src;
       iframeRef.current.src = "";
@@ -20,6 +47,11 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
       }, 50);
     }
   }, []);
+
+  const handleOpenExternal = useCallback(() => {
+    if (!service) return;
+    openPopup(service.url);
+  }, [service]);
 
   if (!service) return null;
 
@@ -67,9 +99,9 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
                 <RotateCw className="w-4 h-4" />
               </button>
               <button
-                onClick={() => window.open(service.url, "_blank")}
+                onClick={handleOpenExternal}
                 className="p-2 rounded-lg hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
-                title="Abrir no navegador"
+                title="Abrir externamente"
               >
                 <ExternalLink className="w-4 h-4" />
               </button>
@@ -84,14 +116,48 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
           </div>
 
           {/* Content */}
-          <div className="flex-1">
-            <iframe
-              ref={iframeRef}
-              src={service.url}
-              className="w-full h-full border-0"
-              sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"
-              title={service.nome}
-            />
+          <div className="flex-1 relative">
+            {!iframeError ? (
+              <>
+                {loading && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-background z-10">
+                    <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                  </div>
+                )}
+                <iframe
+                  ref={iframeRef}
+                  src={service.url}
+                  className="w-full h-full border-0"
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"
+                  onLoad={handleLoad}
+                  onError={handleError}
+                  title={service.nome}
+                />
+              </>
+            ) : (
+              <div className="flex flex-col items-center justify-center h-full gap-4 px-6 text-center">
+                <div className="w-10 h-10 rounded-xl bg-destructive/10 flex items-center justify-center">
+                  <AlertTriangle className="w-5 h-5 text-destructive" />
+                </div>
+                <p className="text-muted-foreground text-sm">
+                  Não foi possível carregar este conteúdo.
+                </p>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={handleReload}
+                    className="px-4 py-2 rounded-xl border border-border text-xs font-medium text-foreground hover:bg-secondary transition-colors"
+                  >
+                    Tentar novamente
+                  </button>
+                  <button
+                    onClick={handleOpenExternal}
+                    className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-medium hover:bg-primary/90 transition-colors"
+                  >
+                    Abrir externamente
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </motion.div>
       </motion.div>
