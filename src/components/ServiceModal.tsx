@@ -128,7 +128,7 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
                   ref={iframeRef}
                   src={service.url}
                   className="w-full h-full border-0"
-                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox"
                   onLoad={handleLoad}
                   onError={handleError}
                   title={service.nome}
