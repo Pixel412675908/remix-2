@@ -117,7 +117,7 @@ export function EmbedViewer({ service, onClose }: EmbedViewerProps) {
                 ref={iframeRef}
                 src={service.url}
                 className="w-full h-full border-0"
-                sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"
+                sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox"
                 onLoad={handleIframeLoad}
                 onError={handleIframeError}
                 title={service.nome}
